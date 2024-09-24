@@ -1,8 +1,10 @@
 import torch
+from torch import nn
 
 def calc_rmse(ground_truth,preds):  
     err = torch.sum((ground_truth - preds) ** 2)
-    err /= (preds.shape[0] + 1) * (preds.shape[1] + 1)
+    print(err)
+    err /= (preds.shape[1] * preds.shape[2])
     return torch.sqrt(err)
 
 class AverageMeter(object):
